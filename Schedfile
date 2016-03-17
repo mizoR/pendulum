@@ -1,0 +1,10 @@
+p self.class
+p settings
+schedule 'hoge' do
+  p settings
+
+  result :td do
+    # not implemented yet..
+    # p settings
+  end
+end

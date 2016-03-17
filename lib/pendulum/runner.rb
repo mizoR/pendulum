@@ -45,7 +45,9 @@ module Pendulum
           client.export(output)
         end
       rescue
+        $stderr.puts $!.class
         $stderr.puts $!
+        $stderr.puts $!.backtrace.join("\n")
         return 1
       end
 

@@ -1,10 +1,12 @@
 module Pendulum::DSL
-  class Schedule
+  class Schedule < Base
     include Helper
 
     attr_accessor :name
 
-    def initialize(name, &block)
+    def initialize(context, name, &block)
+      super(context)
+
       self.name = name
       self.instance_eval(&block) if block_given?
     end

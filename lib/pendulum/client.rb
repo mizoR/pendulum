@@ -6,15 +6,15 @@ module Pendulum
   class Client
     def initialize(api_key='', options={}, &block)
       @api_key = api_key
-      @config = Configuration.new(options)
-      @config.instance_eval(&block) if block_given?
+      @context = Context.new(options)
+      @context.instance_eval(&block) if block_given?
     end
 
     def apply(dry_run: false, force: false, color: false)
       Pendulum::Command::Apply.new(
         td_client,
         current_schedules,
-        @config.schedules,
+        @context.schedules,
         dry_run,
         force,
         color,
